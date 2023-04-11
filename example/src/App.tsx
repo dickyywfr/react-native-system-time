@@ -1,18 +1,38 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-system-time';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { checkTime, checkZone } from 'react-native-system-time';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [isTimeAuto, setIsTimeAuto] = React.useState<string>('');
+  const [isZoneAuto, setIsZoneAuto] = React.useState<string>('');
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  function _checkTime() {
+    checkTime()
+      .then((result) => {
+        setIsTimeAuto(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  function _checkZone() {
+    checkZone()
+      .then((result) => {
+        setIsZoneAuto(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Time Auto: {isTimeAuto.toString()}</Text>
+      <Button title="Check Time" onPress={() => _checkTime()} />
+      <Text>Zone Auto: {isZoneAuto.toString()}</Text>
+      <Button title="Check Zone" onPress={() => _checkZone()}></Button>
     </View>
   );
 }

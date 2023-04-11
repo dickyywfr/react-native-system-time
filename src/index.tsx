@@ -17,6 +17,28 @@ const SystemTime = NativeModules.SystemTime
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return SystemTime.multiply(a, b);
+export function checkTime(): Promise<string> {
+  return new Promise((resolve, reject) => {
+    SystemTime.checkTime(
+      (error: any) => {
+        reject(error);
+      },
+      (result: string) => {
+        resolve(result);
+      }
+    );
+  });
+}
+
+export function checkZone(): Promise<string> {
+  return new Promise((resolve, reject) => {
+    SystemTime.checkZone(
+      (error: any) => {
+        reject(error);
+      },
+      (result: string) => {
+        resolve(result);
+      }
+    );
+  });
 }
