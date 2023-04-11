@@ -1,5 +1,6 @@
 # react-native-system-time
 
+THIS PACKAGE IS ONLY FOR ANDROID
 react-native-system-time is a package for React Native that provides a simple and easy-to-use API for checking whether the system time and time zone are set to automatic or not. The package uses Kotlin to access the Android system settings and retrieve the current settings for the system time and time zone.
 
 ## Installation
