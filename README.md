@@ -11,6 +11,26 @@ npm install react-native-system-time
 ## Usage
 
 ```js
+import { checkTime, checkZone } from 'react-native-system-time';
+function _checkTime() {
+  checkTime()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+function _checkZone() {
+  checkZone()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 // ...
 ```
 
