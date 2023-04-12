@@ -17,10 +17,18 @@ const SystemTime = NativeModules.SystemTime
       }
     );
 
-export function checkTime(): Promise<string> {
-  return SystemTime.checkTime();
+export function checkTime(): Promise<string | boolean> {
+  if (Platform.OS === 'ios') {
+    return Promise.resolve(true);
+  } else {
+    return SystemTime.checkTime();
+  }
 }
 
-export function checkZone(): Promise<string> {
-  return SystemTime.checkZone();
+export function checkZone(): Promise<string | boolean> {
+  if (Platform.OS === 'ios') {
+    return Promise.resolve(true);
+  } else {
+    return SystemTime.checkZone();
+  }
 }

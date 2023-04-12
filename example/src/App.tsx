@@ -9,7 +9,7 @@ export default function App() {
 
   function _checkTime() {
     checkTime()
-      .then((result) => {
+      .then((result: string | boolean) => {
         setIsTimeAuto(result);
       })
       .catch((error) => {
@@ -19,7 +19,7 @@ export default function App() {
 
   function _checkZone() {
     checkZone()
-      .then((result) => {
+      .then((result: string | boolean) => {
         setIsZoneAuto(result);
       })
       .catch((error) => {
